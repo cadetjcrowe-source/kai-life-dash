@@ -1,4 +1,5 @@
 import type { FeatureKey, GymDay, Settings, TodayCardId } from "@/db/schema";
+import { OWNER_NAME } from "./profile";
 
 // Starting categories (stored in the `categories` table, editable in Settings).
 // (Only used for a moment while the real list loads.)
@@ -145,7 +146,7 @@ export const DEFAULT_SETTINGS: Settings = {
   fixedLocation: null,
   lastLocation: null,
   timetableGroup: "",
-  ownerName: "",
+  ownerName: OWNER_NAME,
 };
 
 /** Fill in any settings keys added since the user's settings were first saved. */

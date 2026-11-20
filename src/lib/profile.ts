@@ -1,10 +1,13 @@
+/** Whose dashboard this is: shown on the login page and used as the default name. */
+export const OWNER_NAME = "Kai";
+
 // Install-wide defaults. Everything else personal (your name, categories,
 // location, timetable…) lives in the database and is edited in Settings.
 //
 // Optional environment variables for people outside the UK:
 //   NEXT_PUBLIC_TIME_ZONE         e.g. "Europe/Dublin", "America/New_York" (default Europe/London)
 //   NEXT_PUBLIC_DEFAULT_LOCATION  "lat,lon,Place name" used until the app knows where you are
-//                                 (default "51.51,-0.13,London, United Kingdom")
+//                                 (default "54.23,-4.40,Laxey, Isle of Man")
 
 function validTimeZone(tz: string | undefined): string | null {
   if (!tz) return null;
@@ -26,4 +29,4 @@ function parsePlace(v: string | undefined) {
   return Math.abs(lat) <= 90 && Math.abs(lon) <= 180 ? { lat, lon, name: m[3].trim() } : null;
 }
 
-export const DEFAULT_LOCATION = parsePlace(process.env.NEXT_PUBLIC_DEFAULT_LOCATION) ?? { lat: 51.51, lon: -0.13, name: "London, United Kingdom" };
+export const DEFAULT_LOCATION = parsePlace(process.env.NEXT_PUBLIC_DEFAULT_LOCATION) ?? { lat: 54.23, lon: -4.4, name: "Laxey, Isle of Man" };

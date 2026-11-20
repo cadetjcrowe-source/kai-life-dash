@@ -13,7 +13,7 @@ export const LOCATION_MOVE_KM = 3;
 
 /**
  * Fixed mode uses the chosen city. Otherwise the last device location the app
- * saved, falling back to the default place (London unless configured).
+ * saved, falling back to the default place (Laxey, Isle of Man unless configured).
  */
 export function resolveLocation(s: Pick<Settings, "locationMode" | "fixedLocation" | "lastLocation">): ResolvedPlace {
   if (s.locationMode === "fixed" && s.fixedLocation) return { ...s.fixedLocation, source: "fixed" };

@@ -1,6 +1,6 @@
 # Life — personal dashboard
 
-Your day at a glance: local weather, golden hour, your college timetable, today's events, top 3 tasks, habits, projects, journal and a weekly review. It's an installable iPhone web app that syncs across devices. Everything personal (your name, categories, timetable, location, which features show) is set inside the app, so it's yours from day one. See **[Make it yours](#make-it-yours)**.
+Kai's day at a glance: local weather, golden hour, your college timetable, today's events, top 3 tasks, habits, projects, journal and a weekly review. It's an installable iPhone web app that syncs across devices. Everything personal (your name, categories, timetable, location, which features show) is set inside the app, so it's yours from day one. See **[Make it yours](#make-it-yours)**.
 
 **Stack:** Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Postgres (Neon, via the Vercel Marketplace) · Drizzle ORM · SWR · hosted on Vercel.
 
@@ -148,7 +148,7 @@ Weather, golden hour and the morning summary follow **your location**:
 2. **Battery-friendly.** The app checks your position when it opens or comes back to the foreground, at most every **30 minutes**, using low-power positioning. A new location is saved (and its name looked up) only if you've moved **more than 3 km** or the saved one is over 30 minutes old. Tapping the 📍 pin, or **Settings → Location → Refresh location**, gets a fresh fix straight away.
 3. **Place names** come from BigDataCloud's free reverse-geocoding service, with OpenStreetMap Nominatim as a backup. Neither needs a key.
 4. **Saved to your database.** Your last known location is stored in your settings, so server-side features use it too: the weather API, golden hour and the morning notification.
-5. **Fallbacks.** If location is off or unavailable, the app uses your **last saved location**, then the default place: **London** (51.51, −0.13) unless `NEXT_PUBLIC_DEFAULT_LOCATION` is set.
+5. **Fallbacks.** If location is off or unavailable, the app uses your **last saved location**, then the default place: **Laxey, Isle of Man** (54.23, −4.40) unless `NEXT_PUBLIC_DEFAULT_LOCATION` is set.
 6. **Fixed location.** In **Settings → Location**, choose **Fixed location** and search for a town or city (Open-Meteo geocoding). Everything then uses that place until you switch back.
 
 All times are shown in the app's time zone: UK time unless `NEXT_PUBLIC_TIME_ZONE` is set. So if you travel abroad, sunrise and golden hour are still given in that time zone.
@@ -187,7 +187,7 @@ Redeploy after adding them. The morning notification's daily fallback time in `v
 | `VAPID_PRIVATE_KEY` | for notifications | ″ |
 | `CRON_SECRET` | for notifications | Protects `/api/cron/morning`; Vercel Cron sends it automatically |
 | `NEXT_PUBLIC_TIME_ZONE` | optional | Time zone for "today", streaks and all times. Default `Europe/London` |
-| `NEXT_PUBLIC_DEFAULT_LOCATION` | optional | Fallback place as `lat,lon,Name`. Default `51.51,-0.13,London, United Kingdom` |
+| `NEXT_PUBLIC_DEFAULT_LOCATION` | optional | Fallback place as `lat,lon,Name`. Default `54.23,-4.40,Laxey, Isle of Man` |
 | `VAPID_SUBJECT` | optional | Contact for push services (`mailto:` or `https:`). Defaults to your site's URL |
 
 ## Database changes in this version
