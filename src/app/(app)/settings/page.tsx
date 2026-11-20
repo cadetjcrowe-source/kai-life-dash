@@ -52,6 +52,9 @@ export default function SettingsPage() {
             {s.features.timetable && (
               <TextSetting label="Timetable group" hint="Shown on the Timetable page" value={s.timetableGroup} placeholder="e.g. 2A" onSave={(v) => saveSettings({ timetableGroup: v })} />
             )}
+            <Button variant="ghost" className="w-full" onClick={() => saveSettings({ onboarded: false })}>
+              Run the welcome setup again
+            </Button>
           </div>
         </Card>
 

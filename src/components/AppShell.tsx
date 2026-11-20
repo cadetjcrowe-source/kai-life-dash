@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SWRConfig } from "swr";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CategoriesProvider } from "@/lib/categories";
 import { LocationProvider } from "@/lib/location-client";
 import { swrConfig, useSettings } from "@/lib/client";
 import { DEFAULT_SETTINGS } from "@/lib/constants";
 import type { FeatureKey } from "@/db/schema";
 import { Toaster } from "./Toast";
+import { Welcome } from "./Welcome";
 import { cx } from "./ui";
 import {
   IconCalendar,
@@ -132,12 +133,50 @@ function Shell({ children }: { children: React.ReactNode }) {
   );
 }
 
+/**
+ * Shows the welcome setup until it's been completed once. A per-device hint
+ * avoids flashing the setup (or a blank screen) on every app open.
+ */
+function OnboardingGate({ children }: { children: React.ReactNode }) {
+  const { data } = useSettings();
+  const [hint, setHint] = useState<boolean | null>(null);
+  useEffect(() => {
+    try {
+      setHint(localStorage.getItem("life.onboarded") === "1");
+    } catch {
+      setHint(false);
+    }
+  }, []);
+  useEffect(() => {
+    if (!data) return;
+    try {
+      if (data.onboarded) localStorage.setItem("life.onboarded", "1");
+      else localStorage.removeItem("life.onboarded");
+    } catch {
+      /* ignore */
+    }
+  }, [data]);
+
+  const onboarded = data ? data.onboarded : hint;
+  if (onboarded === null) return <div className="min-h-dvh bg-bg" />; // first paint
+  if (!onboarded) {
+    if (!data) return <div className="min-h-dvh bg-bg" />; // wait for settings before showing setup
+    return (
+      <>
+        <Toaster />
+        <Welcome />
+      </>
+    );
+  }
+  return <Shell>{children}</Shell>;
+}
+
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <SWRConfig value={swrConfig}>
       <CategoriesProvider>
         <LocationProvider>
-          <Shell>{children}</Shell>
+          <OnboardingGate>{children}</OnboardingGate>
         </LocationProvider>
       </CategoriesProvider>
     </SWRConfig>

@@ -147,6 +147,7 @@ export const DEFAULT_SETTINGS: Settings = {
   lastLocation: null,
   timetableGroup: "",
   ownerName: OWNER_NAME,
+  onboarded: false,
 };
 
 /** Fill in any settings keys added since the user's settings were first saved. */

@@ -107,6 +107,7 @@ export const settingsInput = z.object({
   fixedLocation: place.nullable().optional(),
   timetableGroup: z.string().trim().max(30).optional(),
   ownerName: z.string().trim().max(40).optional(),
+  onboarded: z.boolean().optional(),
 });
 
 const hex = z.string().regex(/^#[0-9a-fA-F]{6}$/, "expected a #RRGGBB colour");

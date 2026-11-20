@@ -166,6 +166,7 @@ export type Settings = {
   lastLocation: SavedPlace | null; // last device location reported by the app
   timetableGroup: string; // e.g. "2A"
   ownerName: string; // shown in the greeting and morning summary
+  onboarded: boolean; // finished the first-run welcome setup
 };
 
 export const settings = pgTable("settings", {

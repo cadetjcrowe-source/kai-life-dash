@@ -157,7 +157,17 @@ No new environment variables or database migrations are needed. Location is kept
 
 ## Make it yours
 
-Once you've signed in, open **Settings**:
+The first time you sign in, a short **welcome setup** walks you through it, one screen at a time:
+
+1. **Your name**, for the greeting and morning notification.
+2. **Where you are:** use your current location, or always use a town (Laxey until you choose).
+3. **What you want on it:** switch features like the timetable, gym plan or shot ideas on or off.
+4. **Your categories:** keep, remove or add (College, Cadets, Music, Gaming…).
+5. **Your timetable:** add your weekly lessons (day, time, room, subject), or skip it for now.
+
+Each step saves as you go, and you can skip anything. To run it again, go to **Settings → You → Run the welcome setup again**.
+
+Later, everything can also be changed in **Settings**:
 
 - **You:** your name (for the greeting and morning notification) and your timetable group.
 - **Location:** use your current location, or pick a fixed town.
